@@ -1,0 +1,24 @@
+{//如果在一个目录下存在一个tsconfig.json文件，
+那么意味着这个目录是TypeScript项目的根目录，
+tsconfig.json文件指定了用来编译这个项目的根文件和编译选项
+
+AMD是"Asynchronous Module Definition"的缩写，意思就是"异步模块定义"。
+它采用异步方式加载模块，模块的加载不影响它后面语句的运行。所有依赖这个模块的语句，
+都定义在一个回调函数中，等到加载完成之后，这个回调函数才会运行。
+  "compilerOptions": {
+   "target": "es5",
+   "noImplicitAny": false,// 如果编译器无法根据变量的用途推断出变量的类型，
+	 它就会悄悄的把变量类型默认为 any。
+   "module": "amd",//编写模块的规范
+   "removeComments": false,//是否删除注释
+   "sourceMap": false,//源文件映射
+   "outDir": "src/js"//输出目录
+  },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [//不包含的编译目录
+        "node_modules",
+        "**/*.spec.ts"
+    ]
+}

@@ -20,7 +20,7 @@ let sentence:string = `Hello, my name is ${str}.`
 let list:number[] = ['1',2,3];
 //第二种方式是使用数组泛型，Array<元素类型>：
 // let list:Array<string> = ['1','2','3'];
-console.log(list)
+// console.log(list)
 
 //Any:任何类型
 let lest:ant[] = [1,'3'];
@@ -64,7 +64,74 @@ let someValue:any = 'this is a string';
 let strLength:number = (<string>someValue).length
 //as语法
 let strLength: number = (someValue as string).length;
-console.log(strLength)
+// console.log(strLength)
+
+/**
+ *    接口
+ * TypeScript的核心原则之一是对值所具有的结构进行类型检查。 
+ * 它有时被称做“鸭式辨型法”或“结构性子类型化”。 
+ * 在TypeScript里，接口的作用就是为这些类型命名和为
+ * 你的代码或第三方代码定义契约。
+ */
+
+// function printLabel(labelledObj: { label: string }) {
+//   console.log(labelledObj.label);
+// }
+// 
+// let myObj = { size: 10, label: "Size 10 Object" };
+// printLabel(myObj);
+
+interface LabelledValue{
+	label:string;
+}
+
+function printLabel(labelledObj:LabelledValue){
+	console.log(labelledObj.label);
+}
+
+let myObj = {
+	size:10,label:'Size 10 Object'
+};
+
+// printLabel(myObj)
+
+// 可选属性
+
+interface SquareConfig {
+	color?:string,
+	width?:number
+}
+
+function createSquare(config: SquareConfig): {color: string; area: number} {
+  let newSquare = {color: "white", area: 100};
+  if (config.color) {
+    newSquare.color = config.color;
+  }
+  if (config.width) {
+    newSquare.area = config.width * config.width;
+  }
+  return newSquare;
+}
+
+let mySquare = createSquare({color: "black"});
+
+// 只读属性----------------------------------------------??
+
+interface Point {
+    readonly x: number;
+    readonly y: number;
+}
+let p1: Point = { x: 10, y: 20 };
+p1.x = 5; // error!
+console.log(p1.x)
+//--------------------------------------------------------??
+
+// 函数类型
+// 为了使用接口表示函数类型，我们需要给接口定义一个调用签名。 
+// 它就像是一个只有参数列表和返回值类型的函数定义。
+// 参数列表里的每个参数都需要名字和类型。
+
+//-----------------------------接口-------------------------
 
 
 

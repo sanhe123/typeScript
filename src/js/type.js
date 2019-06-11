@@ -16,7 +16,7 @@ var sentence = "Hello, my name is " + str + ".";
 var list = ['1', 2, 3];
 //第二种方式是使用数组泛型，Array<元素类型>：
 // let list:Array<string> = ['1','2','3'];
-console.log(list);
+// console.log(list)
 //Any:任何类型
 var lest = [1, '3'];
 //viod:表示不是任何类型
@@ -56,4 +56,29 @@ var someValue = 'this is a string';
 var strLength = someValue.length;
 //as语法
 var strLength = someValue.length;
-console.log(strLength);
+function printLabel(labelledObj) {
+    console.log(labelledObj.label);
+}
+var myObj = {
+    size: 10, label: 'Size 10 Object'
+};
+function createSquare(config) {
+    var newSquare = { color: "white", area: 100 };
+    if (config.color) {
+        newSquare.color = config.color;
+    }
+    if (config.width) {
+        newSquare.area = config.width * config.width;
+    }
+    return newSquare;
+}
+var mySquare = createSquare({ color: "black" });
+var p1 = { x: 10, y: 20 };
+p1.x = 5; // error!
+console.log(p1.x);
+//--------------------------------------------------------??
+// 函数类型
+// 为了使用接口表示函数类型，我们需要给接口定义一个调用签名。 
+// 它就像是一个只有参数列表和返回值类型的函数定义。
+// 参数列表里的每个参数都需要名字和类型。
+//-----------------------------接口-------------------------
